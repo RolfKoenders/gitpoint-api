@@ -1,25 +1,27 @@
 'use strict';
 
 const restify = require('restify');
+
 const config = require('./config');
+const services = require('./services');
+const logger = require('./utils/logger');
+const mongo = require('./utils/mongo');
 
-const pino = require('pino')({
-    name: config.logger.name,
-    level: config.logger.level
-});
-
+// Restify server setup
 const server = restify.createServer({
-  name: 'gitpoint-api'
+    name: 'gitpoint-api'
 });
-
 server.use(restify.plugins.queryParser());
 server.use(restify.plugins.bodyParser());
 
-server.get('/health', function (req, res, next) {
-  res.send(200, 'OK');
-  return next();
-});
+// Health endpoint
+server.get('/health', services.health);
 
-server.listen(config.server.port, function () {
-    pino.info(`Server is listening on port: ${config.server.port}`);
+// Trending endpoint
+server.get('/trending/today', services.trending);
+
+mongo.once('open', () => {
+    server.listen(config.server.port, function () {
+        logger.info(`Server is listening on port: ${config.server.port}`);
+    });
 });

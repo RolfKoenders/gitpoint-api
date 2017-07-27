@@ -17,6 +17,26 @@ const configSchema = convict({
             env: 'LOGGER_LEVEL'
         }
     },
+    mongo: {
+        host: {
+            doc: 'MongoDB host',
+            format: String,
+            default: null,
+            env: 'MONGODB_HOST'
+        },
+        port: {
+            doc: 'MongoDB port',
+            format: 'port',
+            default: 27017,
+            env: 'MONGODB_PORT'
+        },
+        database: {
+            doc: 'MongoDB database',
+            format: String,
+            default: 'gitpoint',
+            env: 'MONGODB_DB'
+        }
+    },
     server: {
         port: {
             doc: 'Port to listen on',
