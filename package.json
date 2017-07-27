@@ -1,0 +1,24 @@
+{
+  "name": "gitpoint-api",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RolfKoenders/gitpoint-api.git"
+  },
+  "author": "Rolf Koenders <@rolfkoenders>",
+  "bugs": {
+    "url": "https://github.com/RolfKoenders/gitpoint-api/issues"
+  },
+  "homepage": "https://github.com/RolfKoenders/gitpoint-api#readme",
+  "dependencies": {
+    "convict": "^4.0.0",
+    "install": "^0.10.1",
+    "pino": "^4.7.1",
+    "restify": "^5.0.1"
+  }
+}

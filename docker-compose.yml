@@ -1,0 +1,9 @@
+version: '2'
+services:
+    api:
+        build: .
+        container_name: gp-api
+        environment:
+            LOGGER_LEVEL: trace
+            LOGGER_NAME: GP-API
+            HTTP_PORT: 9090
