@@ -1,7 +1,7 @@
 'use strict';
 
 function NoTrendingDataError() {
-    this.statusCode = 200;
+    this.statusCode = 204;
     this.message = 'No trending data yet..';
     this.code = 'no_trending_data';
 

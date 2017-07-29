@@ -33,7 +33,7 @@ function formateTrendingDayResponse(body) {
     logger.trace('formateTrendingDayResponse');
 
     return {
-        data: body.date,
+        date: body.date,
         repositories: body.repositories.map((repository) => {
             return {
                 position: repository.position,
