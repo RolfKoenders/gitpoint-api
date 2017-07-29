@@ -11,7 +11,7 @@ const options = {
     reconnectTries: Number.MAX_VALUE
 };
 const uri = `mongodb://${config.mongo.host}:${config.mongo.port}/${config.mongo.database}`;
-const db = mongoose.createConnection(uri, options);
+const db = mongoose.connect(uri, options);
 
 db.on('error', (error) => {
     logger.error(error, 'Error while opening connection to Mongo');

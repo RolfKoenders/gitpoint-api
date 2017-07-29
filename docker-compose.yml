@@ -6,18 +6,18 @@ services:
             - 27017:27017
         command: mongod --smallfiles
 
-    # scraper:
-    #     build: ../gitpoint-api-trending-scraper
-    #     container_name: gp-trending-scraper
-    #     environment:
-    #         LOGGER_NAME: GP-Trending-Scraper
-    #         LOGGER_LEVEL: trace
-    #         MONGODB_HOST: mongodb
-    #         MONGODB_PORT: 27017
-    #         MONGODB_DB: gitpoint
-    #         CRON_PATTERN: '0 * * * * *'
-    #     depends_on:
-    #         - "mongodb"
+    scraper:
+        build: ../gitpoint-api-trending-scraper
+        container_name: gp-trending-scraper
+        environment:
+            LOGGER_NAME: GP-Trending-Scraper
+            LOGGER_LEVEL: trace
+            MONGODB_HOST: mongodb
+            MONGODB_PORT: 27017
+            MONGODB_DB: gitpoint
+            CRON_PATTERN: '0 * * * * *'
+        depends_on:
+            - "mongodb"
 
     api:
         build: .
@@ -33,3 +33,5 @@ services:
             - "mongodb"
         ports:
             - 9090:9090
+        volumes:
+            - ./:/opt/app
